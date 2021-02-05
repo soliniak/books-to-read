@@ -18,7 +18,7 @@ Sama aplikacja ma polegać na dodawaniu książek do listy 'do przeczytania', z 
 
 ### Dla chętnych:
 
-- [ ] zapisywanie danych w localStorage, żeby nie znikały po odświeżeniu stronki
+- [x] zapisywanie danych w localStorage, żeby nie znikały po odświeżeniu stronki
 - [ ] licznik książek z danej kategorii
 - [ ] opcja edytowania dodanej pozycji (tytuł, autor, priorytet, kategoria)
 - [x] możliwość filtrowania po kategorii, autorze, priorytecie

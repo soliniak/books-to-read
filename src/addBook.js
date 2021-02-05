@@ -27,6 +27,7 @@ const addBook = () => {
         };
 
         books.push(dataHolder);
+        localStorage.setItem('booksToRead', JSON.stringify(books));
         e.target.reset();
         generateTable();
     });
