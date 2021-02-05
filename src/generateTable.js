@@ -1,7 +1,5 @@
-import { books } from './data';
-
 const generateTable = (filterBy = '') => {
-    const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || books;
+    const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead'));
 
     console.log(booksFromLoaclStorage)
 
