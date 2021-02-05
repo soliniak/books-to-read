@@ -1,17 +1,22 @@
+import {countBooks, countBooksByCategories} from './countBooksAndCategories';
+
 const generateTable = (filterBy = '') => {
     const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead'));
-
-    console.log(booksFromLoaclStorage)
+    const categoriesFromLoaclStorage = JSON.parse(localStorage.getItem('bookCategories')) || categories;
 
     const tableBody = document.querySelector('.table__body');
+
+    countBooks(booksFromLoaclStorage);
+    countBooksByCategories(booksFromLoaclStorage, categoriesFromLoaclStorage);
+
     tableBody.innerHTML = '';
 
     if(booksFromLoaclStorage) {
         booksFromLoaclStorage
             .filter(( book ) => {
-                const {title, author, category} = book;
+                const {priority, author, category} = book;
                 
-                return title.toLowerCase().includes(filterBy.toLowerCase())
+                return priority.toLowerCase().includes(filterBy.toLowerCase())
                 || author.toLowerCase().includes(filterBy.toLowerCase())
                 || category.toLowerCase().includes(filterBy.toLowerCase())
             })
@@ -40,7 +45,7 @@ const generateTable = (filterBy = '') => {
 
         tableBody.innerHTML += tableRowTemplate;
     }
-
+  
     return tableBody;
 }
 

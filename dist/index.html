@@ -14,7 +14,7 @@
             Książki do przeczytania
         </h1>
         <nav class="menu">
-            <input type="text" class="filter-table" placeholder="Tytuł, autor lub kategoria...">
+            <input type="text" class="filter-table" placeholder="Autor, kategoria lub priorytet...">
             <button class="add-new-book open__modal" data-open-modal="add-book__container">
                 Dodaj książkę
             </button>
@@ -102,6 +102,17 @@
         </table>
         
     </main>
+
+    <footer class="footer quantity">
+        <div class="books__quantity">
+            
+        </div>
+        <ul class="categories__quantity">
+            <li>
+                Książki z kategorii ${kategoria}: ${count}
+            </li>
+        </div>
+    </footer>
     <script src="./main.js"></script>
 </body>
 </html>

@@ -24,15 +24,12 @@ const addBook = () => {
         };
 
         for (const [key, value] of data.entries()) {
-            console.log(key, value)
             dataHolder[key] = value.toString();
         };
 
         booksFromLoaclStorage.push(dataHolder);
 
         localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
-
-        console.log('ss')
 
         e.target.reset();
         generateTable();
