@@ -1,4 +1,5 @@
 import {countBooks, countBooksByCategories} from './countBooksAndCategories';
+import deleteBook from './deleteBook';
 
 const generateTable = (filterBy = '') => {
     const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead'));
@@ -11,7 +12,7 @@ const generateTable = (filterBy = '') => {
 
     tableBody.innerHTML = '';
 
-    if(booksFromLoaclStorage) {
+    if(booksFromLoaclStorage.length) {
         booksFromLoaclStorage
             .filter(( book ) => {
                 const {priority, author, category} = book;
@@ -30,7 +31,7 @@ const generateTable = (filterBy = '') => {
                     <td class="category">${category}</td>
                     <td class="addDate">${addDate}</td>
                     <td class="priority">${priority}</td>
-                    <td class="options"></td>
+                    <td class="options"><button class="delete-book" data-id=${id}><i class="fas fa-trash-alt"></i></button></td>
                 </tr>
                 `;
                 
@@ -45,6 +46,8 @@ const generateTable = (filterBy = '') => {
 
         tableBody.innerHTML += tableRowTemplate;
     }
+
+    deleteBook();
   
     return tableBody;
 }
