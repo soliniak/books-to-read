@@ -3,8 +3,8 @@ import generateCategories from './generateCategories';
 
 const addCategory = () => {
     const addCategoryForm = document.querySelector('.add-category__form');
-    const addCategoryBtn = document.querySelector('.btn__add-category');
-    
+    const categoriesFromLoaclStorage = JSON.parse(localStorage.getItem('bookCategories')) || categories;
+
     addCategoryForm.addEventListener('submit', (e) => {
         e.preventDefault();
         new FormData(e.target);
@@ -14,10 +14,12 @@ const addCategory = () => {
         let data = e.formData;
         
         for (const value of data.values()) {
-            categories.push(value.toString().toLowerCase());
+            categoriesFromLoaclStorage.push(value.toString().toLowerCase());
         };
         
         e.target.reset();
+        localStorage.setItem('bookCategories', JSON.stringify(categoriesFromLoaclStorage));
+
         generateCategories();
     });
 };

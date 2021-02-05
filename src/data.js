@@ -32,31 +32,6 @@ const sort = {
 //     addDate: '',
 // }
 
-const books = [
-    {
-        id: '1',
-        title: 'Sherlock Holmes',
-        author: 'sir Arthur Conan Doyle',
-        category: 'kryminał',
-        priority: '3',
-        addDate: '4.02.2021',
-    },
-    {
-        id: '2',
-        title: 'Morderstwo w Orient Ekspresie',
-        author: 'Aghata Christie',
-        category: 'kryminał',
-        priority: '5',
-        addDate: '4.02.2021',
-    },
-    {
-        id: '3',
-        title: 'Kaczki w kosmosie',
-        author: 'Jan Brzechwa',
-        category: 'komedia',
-        priority: '2',
-        addDate: '1.02.2021',
-    }
-];
+const books = [];
 
 export {categories, books, sort};
