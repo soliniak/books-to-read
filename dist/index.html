@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+
+    <header class="header">
+        <h1>
+            Książki do przeczytania
+        </h1>
+        <nav class="menu">
+            <input type="text" class="filter-table" placeholder="Tytuł, autor lub kategoria...">
+            <button class="add-new-book open__modal" data-open-modal="add-book__container">
+                Dodaj książkę
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+
+        <div class="add-category__container modal">
+            <button class="close__modal">
+                <i class="far fa-times-circle"></i>
+            </button>
+            <h2>
+                Dodaj kategorię
+            </h2>
+            <form class="add-category__form modal__form">
+                <label for="new-category">Kategoria: 
+                    <input type="text" name="new-category" id="new-category" required>
+                </label>
+                <button class="btn btn__add-category">Dodaj</button>
+            </form>
+        </div>
+
+        <div class="add-book__container modal">
+            <button class="close__modal"> 
+                <i class="far fa-times-circle"></i>
+            </button>
+            <h2>
+                Dodaj książkę
+            </h2>
+            <form class="add-book__form modal__form">
+                <label for="title">Tytuł: 
+                    <input type="text" class="title" name="title" id="title" required>
+                </label>
+                <label for="author">Autor:
+                    <input type="text" class="author" name="author" id="author" required>
+                </label>
+                <label for="category">Kategoria:
+                    <select class="category" name="category" id="category"></select>
+                    <button type="button" class="btn--round add-new-category open__modal" data-open-modal="add-category__container">+</button>
+                </label>
+                <label for="priority">Priorytet:
+                    <select class="priority" name="priority" id="priority" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </label>
+
+                <button class="btn btn__add-book">Dodaj</button>
+            </form>
+        </div>
+        
+        
+        
+        
+        <table class="books__table">
+            <thead class="table__head">
+                <tr>
+                    <th class="index">
+                        #
+                    </th>
+                    <th class="title">
+                        Tytuł
+                    </th>
+                    <th class="category">
+                        Kategoria
+                    </th>
+                    <th class="add__date">
+                        Data dodania
+                    </th>
+                    <th class="priority">
+                        Priorytet
+                    </th>
+                    <th class="options">
+                        Opcje
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="table__body">
+                
+            </tbody>
+        </table>
+        
+    </main>
+    <script src="./main.js"></script>
+</body>
+</html>

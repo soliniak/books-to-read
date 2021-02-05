@@ -1,0 +1,84 @@
+@import 'reset-css'
+@import 'variables'
+@import 'buttons'
+
+body
+    background-color: $lightWhite
+    @include lightFont
+    display: flex
+    align-items: center
+    justify-content: center
+    padding-top: 3rem
+    flex-direction: column
+
+h1
+    @include normalFont
+    font-size: 2rem
+    align-self: flex-start
+
+.header, .main
+    width: 900px
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    padding: 1rem 0
+
+.menu
+    align-self: flex-end
+
+.books__table
+    width: 100%
+    border: 1px solid silver
+
+.table__body
+    tr
+        &:nth-child(odd)
+            background-color: $lighterWhite
+        &:hover
+            background-color: $darkWhite
+
+.table__head th, .table__body td
+    padding: .5rem 1rem
+
+.id, .category, .priority, .addDate
+    text-align: center
+
+
+.modal
+    border: 1px solid red
+    position: absolute
+    background-color: $lightWhite
+    padding: 2rem
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    transform: translateY(-200%)
+    opacity: 0
+    transition: transform .3s .15s ease, opacity .3s ease
+    &-active
+        opacity: 1
+        transform: translateY(0)
+.modal__form
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    width: 300px
+    margin: 1rem 0
+    label
+        display: flex
+        justify-content: space-between
+        width: 100%
+        padding: .2rem .5rem
+        &:hover
+            background-color: $lighterWhite
+        input
+            text-align: left
+.btn__add-book, .btn__add-category
+    align-self: flex-end
+    margin-top: 1rem
+
+.add-category__container
+    z-index: 5
