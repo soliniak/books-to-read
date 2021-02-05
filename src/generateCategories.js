@@ -8,7 +8,7 @@ const generateCategories = () => {
 
     categoriesFromLoaclStorage.forEach((category) => {
         const categoryTemplate = `
-            <option value=${category}>${category}</option>
+            <option value="${category}">${category}</option>
         `;
         categoriesContainer.innerHTML += categoryTemplate;
     });
