@@ -14,7 +14,7 @@ button
         pointer-events: none
     &:hover
         color: black
-.btn-primary, .btn-round
+.btn-primary, .btn-round, .btn-confirm
     background: $yellow
     align-self: flex-end
     margin-top: 1rem
@@ -30,6 +30,14 @@ button
     position: absolute
     top: 5px
     right: 5px
+
+.btn-primary
+    &.confirm
+        background: none
+        border: 1px solid silver
+        &:hover 
+            border: 1px solid black
+
 
 .btn__add-book, .btn__save-book, .btn__add-category
     align-self: flex-end
