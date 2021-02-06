@@ -1,4 +1,5 @@
 import deleteBook from './deleteBook';
+import generateTable from './generateTable';
 
 const handleMessage = (message, index) => {
     const messageContainer = document.querySelector('.modal-message');
@@ -9,10 +10,9 @@ const handleMessage = (message, index) => {
     messageDiv.textContent = message;
     messageContainer.classList.add('modal-active');
 
-    if(!Number(index)) {
+    if(index === undefined) {
         setTimeout(() => {
             messageContainer.classList.remove('modal-active');
-            // messageDiv.textContent = '';
         }, 2000);
     } else {
         messageConfirm.innerHTML = `

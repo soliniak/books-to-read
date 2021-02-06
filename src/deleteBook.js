@@ -4,23 +4,19 @@ import handleMessage from './handleMessage';
 const deleteBook = (index) => {
     const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead'));
 
-    const deleteBtns = document.querySelectorAll('.delete-book');
-
-
-    if(index) {
+    if(index !== undefined) {
         booksFromLoaclStorage.splice(index, 1);
         localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
-        generateTable();          
+        generateTable();
     } else {
+        const deleteBtns = document.querySelectorAll('.delete-book');
+        
         deleteBtns.forEach(( btn ) => {
             btn.addEventListener('click', (e) => {
                 booksFromLoaclStorage.forEach((book, index) => {
                     if(book.id === Number(e.target.dataset.id)) {
-                        if(handleMessage(`Czy na pewno chcesz usunąć ${book.title}?`, index)) {
-                            booksFromLoaclStorage.splice(index, 1);
-                            localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
-                            generateTable();   
-                        }
+                        handleMessage(`Czy na pewno chcesz usunąć ${book.title}?`, index);
+                        generateTable();
                     }
                 });        
             }, {once: true});

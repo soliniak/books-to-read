@@ -59,7 +59,7 @@ const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sor
     } else {
         const tableRowTemplate = `
             <tr>
-                <td class="no-records-info" colspan="6"> Brak wpisów. Dodaj książkę do przeczytania. </td>
+                <td class="no-records-info" colspan="7"> Brak wpisów. Dodaj książkę do przeczytania. </td>
             </tr>
         `;
 

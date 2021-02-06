@@ -22,6 +22,6 @@ addCategory();
 handleModals();
 filterTable();
 sortTable();
-editBook();
-deleteBook();
+// editBook();
+// deleteBook();
 exportToPdf();
