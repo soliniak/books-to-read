@@ -12,15 +12,24 @@ const addCategory = () => {
     
     addCategoryForm.addEventListener('formdata', (e) => {
         let data = e.formData;
-        
+        let addedFlag = false;
+
         for (const value of data.values()) {
-            categoriesFromLoaclStorage.push(value.toString().toLowerCase());
+            if(!categoriesFromLoaclStorage.includes(value.toString().toLowerCase())) {
+                categoriesFromLoaclStorage.push(value.toString().toLowerCase());
+                addedFlag = true;
+            }
         };
         
-        e.target.reset();
-        localStorage.setItem('bookCategories', JSON.stringify(categoriesFromLoaclStorage));
+        if(addedFlag) {
+            e.target.reset();
+            localStorage.setItem('bookCategories', JSON.stringify(categoriesFromLoaclStorage));
+            generateCategories();
 
-        generateCategories();
+            console.log('dodano')
+        } else {
+            console.log('powtarza się');
+        }
     });
 };
 
