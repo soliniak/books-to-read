@@ -2,7 +2,7 @@ const booksQuantityContainer = document.querySelector('.books__quantity');
 const countBooks = (books) => {
     if(books) {
         booksQuantityContainer.innerHTML = `
-            Ilość książek do przeczytania w bazie: <span class="quantity-number">${books.length || 0}</span>
+            Książki do przeczytania: <span class="quantity-number">${books.length || 0}</span>
         `;
     }
 };

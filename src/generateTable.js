@@ -1,12 +1,15 @@
 import {countBooks, countBooksByCategories} from './countBooksAndCategories';
 import { books, categories } from './data';
 import deleteBook from './deleteBook';
+import editBook from './editBook';
 
-const generateTable = (filter = '', sort = '') => {
+const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sort, sortDirection = sortDirection || 'asc') => {
     const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || books;
     const categoriesFromLoaclStorage = JSON.parse(localStorage.getItem('bookCategories')) || categories;
 
     const tableBody = document.querySelector('.table__body');
+
+    console.log(sortDirection)
 
     countBooks(booksFromLoaclStorage);
     countBooksByCategories(booksFromLoaclStorage, categoriesFromLoaclStorage);
@@ -19,11 +22,25 @@ const generateTable = (filter = '', sort = '') => {
                 const {priority, author, category} = book;
                 
                 return priority.toLowerCase().includes(filter.toLowerCase())
-                || author.toLowerCase().includes(filter.toLowerCase())
-                || category.toLowerCase().includes(filter.toLowerCase())
+                    || author.toLowerCase().includes(filter.toLowerCase())
+                    || category.toLowerCase().includes(filter.toLowerCase())
             })
             .sort((bookA, bookB) => {
-                return bookA[sort] < bookB[sort] ? -1 : 1;
+                if(sort) {
+                    if(sort === 'addDate') {
+                        if(sortDirection === 'asc') {
+                            return new Date(bookA[sort]) < new Date(bookB[sort]) ? -1 : 1;
+                        } else {
+                            return new Date(bookA[sort]) > new Date(bookB[sort]) ? -1 : 1;
+                        }
+                    } else {
+                        if(sortDirection === 'asc') {
+                            return bookA[sort].toLowerCase() < bookB[sort].toLowerCase() ? -1 : 1;
+                        } else {
+                            return bookA[sort].toLowerCase() > bookB[sort].toLowerCase() ? -1 : 1;
+                        }
+                    }
+                }
             })
             .forEach(( book, index ) => {
                 const { id, title, author, category, addDate, priority } = book;
@@ -55,7 +72,7 @@ const generateTable = (filter = '', sort = '') => {
     }
 
     deleteBook();
-
+    editBook();
     return tableBody;
 }
 

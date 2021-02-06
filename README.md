@@ -20,9 +20,9 @@ Sama aplikacja ma polegać na dodawaniu książek do listy 'do przeczytania', z 
 
 - [x] zapisywanie danych w localStorage, żeby nie znikały po odświeżeniu stronki
 - [x] licznik książek z danej kategorii
-- [ ] opcja edytowania dodanej pozycji (tytuł, autor, priorytet, kategoria)
+- [x] opcja edytowania dodanej pozycji (tytuł, autor, priorytet, kategoria)
 - [x] możliwość filtrowania po kategorii, autorze, priorytecie
-- [ ] możliwość sortowania po kategorii, autorze, priorytecie
+- [x] możliwość sortowania po kategorii, autorze, priorytecie
 - [x] możliwość dodania nowej kategorii
 - [ ] drag&drop książki
 - [ ] opcja drukowania listy lub exportu do pdf/csv/xmlJeżeli masz jakieś swoje pomysły to oczywiście kreatywność jest mile widziana.
