@@ -20,7 +20,7 @@ const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sor
                     || category.toLowerCase().includes(filter.toLowerCase())
             })
             .sort((bookA, bookB) => {
-                if(sort) {
+                if(sort && booksFromLoaclStorage.length > 1) {
                     if(sort === 'addDate') {
                         if(sortDirection === 'asc') {
                             return new Date(bookA[sort]) < new Date(bookB[sort]) ? -1 : 1;
@@ -35,6 +35,7 @@ const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sor
                         }
                     }
                 }
+                return 0
             })
             .forEach(( book, index ) => {
                 const { id, title, author, category, addDate, priority } = book;
