@@ -10,6 +10,10 @@ import addBook from './addBook';
 import addCategory from './addCategory';
 import handleModals from './handleModals';
 import filterTable from './filterTable';
+import sortTable from './sortTable';
+import editBook from './editBook';
+import deleteBook from './deleteBook';
+
 
 generateTable();
 generateCategories();
@@ -17,3 +21,8 @@ addBook();
 addCategory();
 handleModals();
 filterTable();
+sortTable();
+editBook();
+deleteBook();
+
+

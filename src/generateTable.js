@@ -1,8 +1,9 @@
 import {countBooks, countBooksByCategories} from './countBooksAndCategories';
+import { books, categories } from './data';
 import deleteBook from './deleteBook';
 
-const generateTable = (filterBy = '') => {
-    const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead'));
+const generateTable = (filter = '', sort = '') => {
+    const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || books;
     const categoriesFromLoaclStorage = JSON.parse(localStorage.getItem('bookCategories')) || categories;
 
     const tableBody = document.querySelector('.table__body');
@@ -17,9 +18,12 @@ const generateTable = (filterBy = '') => {
             .filter(( book ) => {
                 const {priority, author, category} = book;
                 
-                return priority.toLowerCase().includes(filterBy.toLowerCase())
-                || author.toLowerCase().includes(filterBy.toLowerCase())
-                || category.toLowerCase().includes(filterBy.toLowerCase())
+                return priority.toLowerCase().includes(filter.toLowerCase())
+                || author.toLowerCase().includes(filter.toLowerCase())
+                || category.toLowerCase().includes(filter.toLowerCase())
+            })
+            .sort((bookA, bookB) => {
+                return bookA[sort] < bookB[sort] ? -1 : 1;
             })
             .forEach(( book, index ) => {
                 const { id, title, author, category, addDate, priority } = book;
@@ -31,7 +35,10 @@ const generateTable = (filterBy = '') => {
                     <td class="category">${category}</td>
                     <td class="addDate">${addDate}</td>
                     <td class="priority">${priority}</td>
-                    <td class="options"><button class="delete-book" data-id=${id}><i class="fas fa-trash-alt"></i></button></td>
+                    <td class="options">
+                        <button class="delete-book" data-id="${id}" title="Usuń ${title}"><i class="fas fa-trash-alt"></i></button>
+                        <button class="edit-book" data-id="${id}" title="Edytuj ${title}"><i class="fas fa-edit"></i></button>
+                    </td>
                 </tr>
                 `;
                 
@@ -48,7 +55,7 @@ const generateTable = (filterBy = '') => {
     }
 
     deleteBook();
-  
+
     return tableBody;
 }
 

@@ -69,8 +69,38 @@
                 <button class="btn btn__add-book">Dodaj</button>
             </form>
         </div>
-        
-        
+
+        <div class="edit-book__container modal">
+            <button class="close__modal"> 
+                <i class="far fa-times-circle"></i>
+            </button>
+            <h2>
+                Edytuj książkę
+            </h2>
+            <form class="edit-book__form modal__form">
+                <label for="edit-title">Tytuł: 
+                    <input type="text" class="edit-title" name="title" id="edit-title" required>
+                </label>
+                <label for="edit-author">Autor:
+                    <input type="text" class="edit-author" name="author" id="edit-author" required>
+                </label>
+                <label for="edit-category">Kategoria:
+                    <select class="edit-category category" name="category" id="edit-category"></select>
+                    <button type="button" class="btn--round add-new-category open__modal" data-open-modal="add-category__container">+</button>
+                </label>
+                <label for="edit-priority">Priorytet:
+                    <select class="edit-priority" name="priority" id="edit-priority" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </label>
+
+                <button class="btn btn__save-book">Zapisz</button>
+            </form>
+        </div>
         
         
         <table class="books__table">
@@ -80,16 +110,16 @@
                         #
                     </th>
                     <th class="title">
-                        Tytuł
+                        <button class="btn-sort" data-sort="title">Tytuł</button>
                     </th>
                     <th class="category">
-                        Kategoria
+                        <button class="btn-sort" data-sort="category">Kategoria</button>
                     </th>
                     <th class="add__date">
-                        Data dodania
+                        <button class="btn-sort" data-sort="add-date">Data dodania</button>
                     </th>
                     <th class="priority">
-                        Priorytet
+                        <button class="btn-sort" data-sort="priority">Priorytet</button>
                     </th>
                     <th class="options">
                         Opcje
@@ -104,14 +134,8 @@
     </main>
 
     <footer class="footer quantity">
-        <div class="books__quantity">
-            
-        </div>
-        <ul class="categories__quantity">
-            <li>
-                Książki z kategorii ${kategoria}: ${count}
-            </li>
-        </div>
+        <div class="books__quantity"></div>
+        <ul class="categories__quantity"></div>
     </footer>
     <script src="./main.js"></script>
 </body>

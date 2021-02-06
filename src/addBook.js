@@ -1,17 +1,24 @@
 import { books } from './data';
 import generateTable from './generateTable';
+import editBook from './editBook';
 
 const addBook = () => {
     const addBookForm = document.querySelector('.add-book__form');
 
-    const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || books;
-
+    
     addBookForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        new FormData(e.target);
-    });
 
+        new FormData(e.target);
+        
+        e.target.reset();
+        generateTable();
+        addBook();
+        editBook();
+    }, {once: true});
+    
     addBookForm.addEventListener('formdata', (e) => {
+        const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || books;
         let data = e.formData;
 
         let dataHolder = {
@@ -28,12 +35,9 @@ const addBook = () => {
         };
 
         booksFromLoaclStorage.push(dataHolder);
-
         localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
 
-        e.target.reset();
-        generateTable();
-    });
-}
+    }, {once: true});
+};
 
 export default addBook;

@@ -4,7 +4,7 @@ const filterTable = () => {
     const filterInput = document.querySelector('.filter-table');
 
     filterInput.addEventListener('input', (e) => {
-        generateTable(e.target.value);
+        generateTable(e.target.value, '');
     });
 };
 
