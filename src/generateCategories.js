@@ -1,6 +1,6 @@
 import { categories } from './data'
 
-const generateCategories = () => {    
+const generateCategories = (selected) => {    
     const categoriesContainers = document.querySelectorAll('select.category');
     const categoriesFromLoaclStorage = JSON.parse(localStorage.getItem('bookCategories')) || categories;
 
@@ -9,7 +9,7 @@ const generateCategories = () => {
         
         categoriesFromLoaclStorage.forEach((category) => {
             const categoryTemplate = `
-                <option value="${category}">${category}</option>
+                <option value="${category}" ${category == selected ? 'selected' : ''}>${category}</option>
             `;
             
             categoriesContainer.innerHTML += categoryTemplate;

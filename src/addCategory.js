@@ -19,13 +19,13 @@ const addCategory = () => {
             if(!categoriesFromLoaclStorage.includes(value.toString().toLowerCase())) {
                 categoriesFromLoaclStorage.push(value.toString().toLowerCase());
                 addedFlag = true;
+                localStorage.setItem('bookCategories', JSON.stringify(categoriesFromLoaclStorage));
+                generateCategories(value.toString().toLowerCase());
             }
         };
         
         if(addedFlag) {
             e.target.reset();
-            localStorage.setItem('bookCategories', JSON.stringify(categoriesFromLoaclStorage));
-            generateCategories();
 
             const addCategoryContainer = document.querySelector('.add-category__container');
             addCategoryContainer.classList.remove('modal-active');

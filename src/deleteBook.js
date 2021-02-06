@@ -15,7 +15,7 @@ const deleteBook = (index) => {
             btn.addEventListener('click', (e) => {
                 booksFromLoaclStorage.forEach((book, index) => {
                     if(book.id === Number(e.target.dataset.id)) {
-                        handleMessage(`Czy na pewno chcesz usunąć ${book.title}?`, index);
+                        handleMessage(`Czy na pewno chcesz usunąć "${book.title}"?`, index);
                         generateTable();
                     }
                 });        

@@ -49,9 +49,8 @@ h2
             background-color: $lighterWhite
         &:hover
             background-color: $darkWhite
-    .options
-        display: flex
-        justify-content: center
+
+
 
 .table__head th
     font-weight: 400
@@ -64,9 +63,13 @@ h2
         width: 60px
     &.add__date .btn-sort, &.priority .btn-sort
         margin: 0 auto
-
+    &.add__date
+        width: 105px
+    &.options
+        width: 100px
 
 .table__body td
+    vertical-align: middle
     &:not(.id)
         padding: 0.5rem 0.3rem
 
@@ -75,6 +78,10 @@ h2
     &.category
         text-align: left
         width: 160px
+    &.options
+        text-align: center
+        button
+            display: inline
 .modal
     box-shadow: 0 0 3px rgba(30,30,30,.5)
     position: fixed
@@ -86,18 +93,17 @@ h2
     align-items: center
     flex-direction: column
     transform: translateY(-110%)
-    // opacity: 0
     transition: all .3s ease
     z-index: 5
     &-message
         z-index: 10
         width: 450px
-        // top: 65px
         font-weight: 400
         &.modal-active
             top: 10%
+        .message
+            line-height: 1.1rem
     &-active
-        // opacity: 1
         top: 50%
         transform: translateY(-50%)
 .modal__form

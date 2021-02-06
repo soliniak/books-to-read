@@ -11,8 +11,6 @@ import addCategory from './addCategory';
 import handleModals from './handleModals';
 import filterTable from './filterTable';
 import sortTable from './sortTable';
-import editBook from './editBook';
-import deleteBook from './deleteBook';
 import exportToPdf from './exportToPdf';
 
 generateTable();
@@ -22,6 +20,4 @@ addCategory();
 handleModals();
 filterTable();
 sortTable();
-// editBook();
-// deleteBook();
 exportToPdf();
