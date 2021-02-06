@@ -1,5 +1,4 @@
 import generateTable from './generateTable';
-import editBook from './editBook';
 
 const deleteBook = () => {
     const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead'));
@@ -13,7 +12,6 @@ const deleteBook = () => {
                     booksFromLoaclStorage.splice(index, 1);
                     localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
                     generateTable();   
-                    editBook();
                 }
             });        
         });

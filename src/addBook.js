@@ -14,7 +14,6 @@ const addBook = () => {
         e.target.reset();
         generateTable();
         addBook();
-        editBook();
     }, {once: true});
     
     addBookForm.addEventListener('formdata', (e) => {

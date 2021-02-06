@@ -57,7 +57,6 @@ const editBook = (editIndex) => {
 
         localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
         generateTable();
-        editBook();
     }, {once: true});
 
 };

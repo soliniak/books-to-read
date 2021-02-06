@@ -6,7 +6,6 @@ const sortTable = () => {
     sortBtns.forEach((btn) => {
         let sortDirection = true;
         btn.addEventListener('click', (e) => {
-
             sortDirection = !sortDirection;
 
             localStorage.setItem('sortBy', e.target.dataset.sort)

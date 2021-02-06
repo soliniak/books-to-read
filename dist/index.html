@@ -7,13 +7,11 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
-
     <header class="header">
         <h1>
             Książki do przeczytania
         </h1>
-        <nav class="menu">
+        <nav class="menu" data-html2canvas-ignore="true">
             <input type="text" class="filter-table" placeholder="Autor, kategoria lub priorytet...">
             <button class="add-new-book open__modal" data-open-modal="add-book__container">
                 Dodaj książkę
@@ -23,7 +21,7 @@
 
     <main class="main">
 
-        <div class="add-category__container modal">
+        <div class="add-category__container modal" data-html2canvas-ignore="true">
             <button class="close__modal">
                 <i class="far fa-times-circle"></i>
             </button>
@@ -38,7 +36,7 @@
             </form>
         </div>
 
-        <div class="add-book__container modal">
+        <div class="add-book__container modal" data-html2canvas-ignore="true">
             <button class="close__modal"> 
                 <i class="far fa-times-circle"></i>
             </button>
@@ -70,7 +68,7 @@
             </form>
         </div>
 
-        <div class="edit-book__container modal">
+        <div class="edit-book__container modal" data-html2canvas-ignore="true">
             <button class="close__modal"> 
                 <i class="far fa-times-circle"></i>
             </button>
@@ -103,7 +101,7 @@
         </div>
         
         
-        <table class="books__table">
+        <table class="books__table" id="books__table">
             <thead class="table__head">
                 <tr>
                     <th class="index">
@@ -121,7 +119,7 @@
                     <th class="priority">
                         <button type="button" class="btn-sort" data-sort="priority">Priorytet</button>
                     </th>
-                    <th class="options">
+                    <th class="options" data-html2canvas-ignore="true">
                         Opcje
                     </th>
                 </tr>
@@ -133,7 +131,8 @@
         
     </main>
 
-    <footer class="footer quantity">
+    <footer class="footer quantity" data-html2canvas-ignore="true">
+        <button class="export-to-pdf">exportuj do pdf</button>
         <div class="books__quantity"></div>
         <ul class="categories__quantity"></div>
     </footer>

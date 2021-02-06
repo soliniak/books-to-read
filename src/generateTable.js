@@ -6,13 +6,7 @@ import editBook from './editBook';
 const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sort, sortDirection = sortDirection || 'asc') => {
     const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || books;
     const categoriesFromLoaclStorage = JSON.parse(localStorage.getItem('bookCategories')) || categories;
-
     const tableBody = document.querySelector('.table__body');
-
-    console.log(sortDirection)
-
-    countBooks(booksFromLoaclStorage);
-    countBooksByCategories(booksFromLoaclStorage, categoriesFromLoaclStorage);
 
     tableBody.innerHTML = '';
 
@@ -52,7 +46,7 @@ const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sor
                     <td class="category">${category}</td>
                     <td class="addDate">${addDate}</td>
                     <td class="priority">${priority}</td>
-                    <td class="options">
+                    <td class="options" data-html2canvas-ignore="true">
                         <button class="delete-book" data-id="${id}" title="Usuń ${title}"><i class="fas fa-trash-alt"></i></button>
                         <button class="edit-book" data-id="${id}" title="Edytuj ${title}"><i class="fas fa-edit"></i></button>
                     </td>
@@ -73,6 +67,9 @@ const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sor
 
     deleteBook();
     editBook();
+    countBooks(booksFromLoaclStorage);
+    countBooksByCategories(booksFromLoaclStorage, categoriesFromLoaclStorage);
+
     return tableBody;
 }
 

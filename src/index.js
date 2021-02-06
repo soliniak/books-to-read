@@ -13,7 +13,7 @@ import filterTable from './filterTable';
 import sortTable from './sortTable';
 import editBook from './editBook';
 import deleteBook from './deleteBook';
-
+import exportToPdf from './exportToPdf';
 
 generateTable();
 generateCategories();
@@ -24,5 +24,4 @@ filterTable();
 sortTable();
 editBook();
 deleteBook();
-
-
+exportToPdf();
