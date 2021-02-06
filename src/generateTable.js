@@ -43,6 +43,7 @@ const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sor
                 <tr>
                     <td class="id">${index + 1}</td>
                     <td class="title">${title}</td>
+                    <td class="author">${author}</td>
                     <td class="category">${category}</td>
                     <td class="addDate">${addDate}</td>
                     <td class="priority">${priority}</td>

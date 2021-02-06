@@ -8,15 +8,19 @@
 </head>
 <body>
     <header class="header">
-        <h1>
-            Książki do przeczytania
-        </h1>
-        <nav class="menu" data-html2canvas-ignore="true">
-            <input type="text" class="filter-table" placeholder="Autor, kategoria lub priorytet...">
-            <button class="add-new-book open__modal" data-open-modal="add-book__container">
-                Dodaj książkę
-            </button>
-        </nav>
+        <div class="header__wrapper">
+            <h1>
+                Książki do przeczytania
+            </h1>
+            <nav class="menu" data-html2canvas-ignore="true">
+                <button class="btn-primary btn-white add-new-book open__modal" data-open-modal="add-book__container">
+                    Dodaj książkę
+                </button>
+                <label for="filter-table" class="filter-table__label">Filtruj: 
+                    <input type="text" class="filter-table" id="filter-table" placeholder="Autor, kategoria lub priorytet...">
+                </label>
+            </nav>
+        </div>
     </header>
 
     <main class="main">
@@ -32,7 +36,7 @@
                 <label for="new-category">Kategoria: 
                     <input type="text" name="new-category" id="new-category" required>
                 </label>
-                <button class="btn btn__add-category">Dodaj</button>
+                <button class="btn-primary btn__add-category">Dodaj</button>
             </form>
         </div>
 
@@ -51,8 +55,8 @@
                     <input type="text" class="author" name="author" id="author" required>
                 </label>
                 <label for="category">Kategoria:
+                    <button type="button" class="btn-round add-new-category open__modal" data-open-modal="add-category__container" title="Dodaj nową kategorię"><i class="fas fa-plus"></i></button>
                     <select class="category" name="category" id="category"></select>
-                    <button type="button" class="btn--round add-new-category open__modal" data-open-modal="add-category__container">+</button>
                 </label>
                 <label for="priority">Priorytet:
                     <select class="priority" name="priority" id="priority" required>
@@ -64,7 +68,7 @@
                     </select>
                 </label>
 
-                <button class="btn btn__add-book">Dodaj</button>
+                <button class="btn-primary btn__add-book">Dodaj</button>
             </form>
         </div>
 
@@ -83,8 +87,8 @@
                     <input type="text" class="edit-author" name="author" id="edit-author" required>
                 </label>
                 <label for="edit-category">Kategoria:
+                    <button type="button" class="btn-round add-new-category open__modal" data-open-modal="add-category__container" title="Dodaj nową kategorię"><i class="fas fa-plus"></i></button>
                     <select class="edit-category category" name="category" id="edit-category"></select>
-                    <button type="button" class="btn--round add-new-category open__modal" data-open-modal="add-category__container">+</button>
                 </label>
                 <label for="edit-priority">Priorytet:
                     <select class="edit-priority" name="priority" id="edit-priority" required>
@@ -96,7 +100,7 @@
                     </select>
                 </label>
 
-                <button class="btn btn__save-book">Zapisz</button>
+                <button class="btn-primary btn__save-book">Zapisz</button>
             </form>
         </div>
         
@@ -110,6 +114,9 @@
                     <th class="title">
                         <button type="button" class="btn-sort" data-sort="title">Tytuł</button>
                     </th>
+                    <th class="author">
+                        <button type="button" class="btn-sort" data-sort="author">Autor</button>
+                    </th>                    
                     <th class="category">
                         <button type="button" class="btn-sort" data-sort="category">Kategoria</button>
                     </th>
@@ -132,7 +139,7 @@
     </main>
 
     <footer class="footer quantity" data-html2canvas-ignore="true">
-        <button class="export-to-pdf">exportuj do pdf</button>
+        <button class="btn-primary export-to-pdf">Eksportuj do PDF</button>
         <div class="books__quantity"></div>
         <ul class="categories__quantity"></div>
     </footer>

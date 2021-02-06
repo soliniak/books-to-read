@@ -8,25 +8,36 @@ body
     display: flex
     align-items: center
     justify-content: center
-    padding-top: 1rem
     flex-direction: column
+    font-size: 15px
 
 h1
     @include normalFont
     font-size: 2rem
-    align-self: flex-start
+    align-self: center
+    margin: 1rem
 
-.header, .main, .footer
+h2
+    font-weight: 400
+
+.header, .main, .footer, .header__wrapper
     width: 100%
     max-width: 800px
     display: flex
     align-items: center
     justify-content: center
     flex-direction: column
+.header
     padding: 1rem 0
-
+    margin-bottom: 1rem
+    max-width: 100%
+    background-color: $yellow
 .menu
-    align-self: flex-end
+    // align-self: flex-end
+    display: flex
+    flex-direction: row
+    align-items: flex-end
+    width: 100%
 
 .books__table
     width: 100%
@@ -41,15 +52,31 @@ h1
     .options
         display: flex
         justify-content: center
-.table__head th, .table__body td
-    padding: .5rem 1rem
 
-.id, .category, .priority, .addDate
+.table__head th
+    font-weight: 400
+    font-size: 13px
+    padding: .5rem 0
     text-align: center
+    &.index
+        width: 30px
+    &.priority
+        width: 60px
+    &.add__date .btn-sort, &.priority .btn-sort
+        margin: 0 auto
 
 
+.table__body td
+    &:not(.id)
+        padding: 0.5rem 0.3rem
+
+    &.id, &.priority, &.addDate
+        text-align: center
+    &.category
+        text-align: left
+        width: 160px
 .modal
-    border: 1px solid red
+    box-shadow: 0 0 3px rgba(30,30,30,.5)
     position: absolute
     background-color: $lightWhite
     padding: 2rem
@@ -69,19 +96,17 @@ h1
     justify-content: center
     flex-direction: column
     width: 300px
-    margin: 1rem 0
+    margin-top: 1rem
     label
         display: flex
         justify-content: space-between
+        align-items: center
         width: 100%
         padding: .2rem .5rem
         &:hover
             background-color: $lighterWhite
         input
             text-align: left
-.btn__add-book, .btn__add-category
-    align-self: flex-end
-    margin-top: 1rem
 
 .add-category__container
     z-index: 5
@@ -91,3 +116,12 @@ h1
 
 .footer
     align-items: flex-start
+
+.filter-table__label
+    margin-left: auto
+    font-weight: 400
+    font-size: 13px
+
+.books__quantity
+    font-weight: 400
+    margin-bottom: 1rem

@@ -9,7 +9,7 @@ const sortTable = () => {
             sortDirection = !sortDirection;
 
             localStorage.setItem('sortBy', e.target.dataset.sort)
-            generateTable('', localStorage.getItem('sortBy') || e.target.dataset.sort, sortDirection ? 'asc' : 'desc');
+            generateTable(localStorage.getItem('filterBy'), localStorage.getItem('sortBy') || e.target.dataset.sort, sortDirection ? 'asc' : 'desc');
         });
     });
 };

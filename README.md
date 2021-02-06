@@ -25,4 +25,4 @@ Sama aplikacja ma polegać na dodawaniu książek do listy 'do przeczytania', z 
 - [x] możliwość sortowania po kategorii, autorze, priorytecie
 - [x] możliwość dodania nowej kategorii
 - [ ] drag&drop książki
-- [ ] opcja drukowania listy lub exportu do pdf/csv/xmlJeżeli masz jakieś swoje pomysły to oczywiście kreatywność jest mile widziana.
+- [x] opcja drukowania listy lub exportu do pdf/csv/xmlJeżeli masz jakieś swoje pomysły to oczywiście kreatywność jest mile widziana.
