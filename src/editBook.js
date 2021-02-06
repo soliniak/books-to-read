@@ -1,5 +1,6 @@
 import generateCategories from './generateCategories';
 import generateTable from './generateTable';
+import handleMessage from './handleMessage';
 
 const editBook = (editIndex) => {
     const editBookContainer = document.querySelector('.edit-book__container');
@@ -57,6 +58,8 @@ const editBook = (editIndex) => {
 
         localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
         generateTable();
+        handleMessage('Zmiany zostały zapisane.');
+        editBookContainer.classList.remove('modal-active');
     }, {once: true});
 
 };

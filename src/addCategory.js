@@ -1,5 +1,6 @@
 import { categories } from './data';
 import generateCategories from './generateCategories';
+import handleMessage from './handleMessage';
 
 const addCategory = () => {
     const addCategoryForm = document.querySelector('.add-category__form');
@@ -26,9 +27,12 @@ const addCategory = () => {
             localStorage.setItem('bookCategories', JSON.stringify(categoriesFromLoaclStorage));
             generateCategories();
 
-            console.log('dodano')
+            const addCategoryContainer = document.querySelector('.add-category__container');
+            addCategoryContainer.classList.remove('modal-active');
+
+            handleMessage('Pomyślnie dodano kategorię.');
         } else {
-            console.log('powtarza się');
+            handleMessage('Wybrana kategoria już istnieje.');
         }
     });
 };

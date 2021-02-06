@@ -1,11 +1,12 @@
 import { books } from './data';
 import generateTable from './generateTable';
 import editBook from './editBook';
+import handleMessage from './handleMessage';
 
 const addBook = () => {
     const addBookForm = document.querySelector('.add-book__form');
+    const addBookContainer = document.querySelector('.add-book__container');
 
-    
     addBookForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -35,7 +36,9 @@ const addBook = () => {
 
         booksFromLoaclStorage.push(dataHolder);
         localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
+        addBookContainer.classList.remove('modal-active');
 
+        handleMessage('Pomyślnie dodano książkę do listy.')
     }, {once: true});
 };
 

@@ -10,7 +10,7 @@ body
     justify-content: center
     flex-direction: column
     font-size: 15px
-
+    padding-bottom: 2rem
 h1
     @include normalFont
     font-size: 2rem
@@ -55,7 +55,7 @@ h2
 
 .table__head th
     font-weight: 400
-    font-size: 13px
+    font-size: 15px
     padding: .5rem 0
     text-align: center
     &.index
@@ -77,19 +77,29 @@ h2
         width: 160px
 .modal
     box-shadow: 0 0 3px rgba(30,30,30,.5)
-    position: absolute
+    position: fixed
+    top: 0
     background-color: $lightWhite
     padding: 2rem
     display: flex
     justify-content: center
     align-items: center
     flex-direction: column
-    transform: translateY(-200%)
-    opacity: 0
-    transition: transform .3s .15s ease, opacity .3s ease
+    transform: translateY(-110%)
+    // opacity: 0
+    transition: all .3s ease
+    z-index: 5
+    &-message
+        z-index: 10
+        width: 450px
+        // top: 65px
+        font-weight: 400
+        &.modal-active
+            top: 65px
     &-active
-        opacity: 1
-        transform: translateY(0)
+        // opacity: 1
+        top: 50%
+        transform: translateY(-50%)
 .modal__form
     display: flex
     align-items: center
@@ -109,7 +119,7 @@ h2
             text-align: left
 
 .add-category__container
-    z-index: 5
+    z-index: 8
 
 .no-records-info
     text-align: center
