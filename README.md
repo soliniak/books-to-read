@@ -26,3 +26,12 @@ Sama aplikacja ma polegać na dodawaniu książek do listy 'do przeczytania', z 
 - [x] możliwość dodania nowej kategorii
 - [ ] drag&drop książki
 - [x] opcja drukowania listy lub exportu do pdf/csv/xmlJeżeli masz jakieś swoje pomysły to oczywiście kreatywność jest mile widziana.
+
+### Wersja 2.0 mogłaby zawierać:
+
+- [ ] wyświetlanie priorytetu w formie graficznej
+- [ ] drag&drop książki
+- [ ] wyświetlanie długich tytułów w krótkiej formie z `...` na końcu + wyświetlanie pełnego tytułu przy hoverze na tytuł
+- [ ] edycja wpisów "inline" w tabeli poprzez contenteditable
+- [ ] pasek postępu czytania książki (użytkownik wpisuje ile stron zawiera książka i na której stronie aktualnie się znajduje)
+- [ ] możliwość dodawania notatek do książek
