@@ -20,7 +20,6 @@ const editBook = (editIndex) => {
             const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || books;
 
             generateCategories();
-
             editBookContainer.classList.add('modal-active');
 
             booksFromLoaclStorage.forEach((book, index) => {
@@ -59,6 +58,7 @@ const editBook = (editIndex) => {
 
         localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
         generateTable();
+        
         handleMessage('Zmiany zostały zapisane.');
         editBookContainer.classList.remove('modal-active');
     }, {once: true});

@@ -2,7 +2,6 @@ import { books } from './data';
 import generateTable from './generateTable';
 import handleMessage from './handleMessage';
 import generateCategories from './generateCategories';
-import addCategory from './addCategory';
 
 const addBook = () => {
     const addBookForm = document.querySelector('.add-book__form');
@@ -38,7 +37,6 @@ const addBook = () => {
         generateTable();
         generateCategories();
         addBook();
-        addCategory();
         
     }, {once: true});
 };

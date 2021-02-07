@@ -35,6 +35,8 @@ const addCategory = () => {
         } else {
             handleMessage('Wybrana kategoria już istnieje.');
         }
+
+        addCategory();
     }, {once: true});
 };
 
