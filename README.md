@@ -35,3 +35,4 @@ Sama aplikacja ma polegać na dodawaniu książek do listy 'do przeczytania', z 
 - [ ] edycja wpisów "inline" w tabeli poprzez contenteditable
 - [ ] pasek postępu czytania książki (użytkownik wpisuje ile stron zawiera książka i na której stronie aktualnie się znajduje)
 - [ ] możliwość dodawania notatek do książek
+- [ ] widok mobilny
