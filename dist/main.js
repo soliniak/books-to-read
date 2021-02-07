@@ -27746,6 +27746,8 @@ var addCategory = function addCategory() {
     } else {
       (0,_handleMessage__WEBPACK_IMPORTED_MODULE_2__.default)('Wybrana kategoria już istnieje.');
     }
+
+    addCategory();
   }, {
     once: true
   });
@@ -28064,8 +28066,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data */ "./src/data.js");
 /* harmony import */ var _deleteBook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./deleteBook */ "./src/deleteBook.js");
 /* harmony import */ var _editBook__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editBook */ "./src/editBook.js");
-/* harmony import */ var _addBook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./addBook */ "./src/addBook.js");
-
 
 
 
@@ -28120,8 +28120,7 @@ var generateTable = function generateTable() {
   }
 
   (0,_deleteBook__WEBPACK_IMPORTED_MODULE_2__.default)();
-  (0,_editBook__WEBPACK_IMPORTED_MODULE_3__.default)(); // addBook();
-
+  (0,_editBook__WEBPACK_IMPORTED_MODULE_3__.default)();
   (0,_countBooksAndCategories__WEBPACK_IMPORTED_MODULE_0__.countBooks)(booksFromLoaclStorage);
   (0,_countBooksAndCategories__WEBPACK_IMPORTED_MODULE_0__.countBooksByCategories)(booksFromLoaclStorage, categoriesFromLoaclStorage);
   return tableBody;
