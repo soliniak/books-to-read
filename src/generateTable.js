@@ -2,9 +2,11 @@ import {countBooks, countBooksByCategories} from './countBooksAndCategories';
 import { books, categories } from './data';
 import deleteBook from './deleteBook';
 import editBook from './editBook';
+import addBook from './addBook';
 
 const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sort, sortDirection = sortDirection || 'asc') => {
     const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || books;
+    
     const categoriesFromLoaclStorage = JSON.parse(localStorage.getItem('bookCategories')) || categories;
     const tableBody = document.querySelector('.table__body');
 
@@ -69,6 +71,7 @@ const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sor
 
     deleteBook();
     editBook();
+    // addBook();
     countBooks(booksFromLoaclStorage);
     countBooksByCategories(booksFromLoaclStorage, categoriesFromLoaclStorage);
 

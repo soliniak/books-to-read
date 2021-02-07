@@ -8,19 +8,20 @@ const addCategory = () => {
 
     addCategoryForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        new FormData(e.target);
-    });
-    
-    addCategoryForm.addEventListener('formdata', (e) => {
-        let data = e.formData;
+        
+        let data = new FormData(e.target);
         let addedFlag = false;
 
         for (const value of data.values()) {
-            if(!categoriesFromLoaclStorage.includes(value.toString().toLowerCase())) {
-                categoriesFromLoaclStorage.push(value.toString().toLowerCase());
+            const newCategory = value.toString().toLowerCase();
+            
+            if(!categoriesFromLoaclStorage.includes(newCategory)) {
+                categoriesFromLoaclStorage.push(newCategory);
+
                 addedFlag = true;
                 localStorage.setItem('bookCategories', JSON.stringify(categoriesFromLoaclStorage));
-                generateCategories(value.toString().toLowerCase());
+
+                generateCategories(newCategory);
             }
         };
         
@@ -34,7 +35,7 @@ const addCategory = () => {
         } else {
             handleMessage('Wybrana kategoria już istnieje.');
         }
-    });
+    }, {once: true});
 };
 
 export default addCategory;

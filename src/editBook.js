@@ -1,6 +1,7 @@
 import generateCategories from './generateCategories';
 import generateTable from './generateTable';
 import handleMessage from './handleMessage';
+import { books } from './data';
 
 const editBook = (editIndex) => {
     const editBookContainer = document.querySelector('.edit-book__container');
@@ -16,7 +17,7 @@ const editBook = (editIndex) => {
 
     editBookBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
-            const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || [];
+            const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || books;
 
             generateCategories();
 
@@ -43,7 +44,7 @@ const editBook = (editIndex) => {
 
     saveBookBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || [];
+        const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || books;
 
         let { id, addDate } = booksFromLoaclStorage[bookIndex || localStorage.getItem('bookEditIndex')];
 

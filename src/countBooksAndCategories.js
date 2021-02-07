@@ -23,7 +23,7 @@ const countBooksByCategories = (books, categories) => {
             });
             
             categoriesQuantityContainer.innerHTML += `
-            ${categoryCount ? `<li>${category}: <span class="category-count">${categoryCount}</span></li>` : ''}
+            ${categoryCount ? `<li>- ${category}: <span class="category-count">${categoryCount}</span></li>` : ''}
             `;
         });
     }

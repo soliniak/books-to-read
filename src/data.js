@@ -16,12 +16,6 @@ const categories = [
     'powieść przygodowa',
 ];
 
-const sort = {
-    sortBy: '',
-    direction: ''
-};
-
-
 // Book object template
 // {
 //     id: '',
@@ -34,4 +28,4 @@ const sort = {
 
 const books = [];
 
-export {categories, books, sort};
+export {categories, books};
