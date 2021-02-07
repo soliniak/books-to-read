@@ -27846,11 +27846,7 @@ var deleteBook = function deleteBook(index) {
   if (index !== undefined) {
     booksFromLoaclStorage.splice(index, 1);
     localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
-<<<<<<< HEAD
     (0,_generateTable__WEBPACK_IMPORTED_MODULE_0__.default)(localStorage.getItem('filterBy') || '', localStorage.getItem('sortBy') || '');
-=======
-    (0,_generateTable__WEBPACK_IMPORTED_MODULE_0__.default)(localStorage.getItem('filterBy'), localStorage.getItem('sortBy'));
->>>>>>> 785812e9c13a64a9ae8fb801fc238fba0a3ee0ed
   } else {
     var deleteBtns = document.querySelectorAll('.delete-book');
     deleteBtns.forEach(function (btn) {
@@ -27858,11 +27854,7 @@ var deleteBook = function deleteBook(index) {
         booksFromLoaclStorage.forEach(function (book, index) {
           if (book.id === Number(e.target.dataset.id)) {
             (0,_handleMessage__WEBPACK_IMPORTED_MODULE_1__.default)("Czy na pewno chcesz usun\u0105\u0107 \"".concat(book.title, "\"?"), index);
-<<<<<<< HEAD
             (0,_generateTable__WEBPACK_IMPORTED_MODULE_0__.default)(localStorage.getItem('filterBy') || '', localStorage.getItem('sortBy') || '');
-=======
-            (0,_generateTable__WEBPACK_IMPORTED_MODULE_0__.default)(localStorage.getItem('filterBy'), localStorage.getItem('sortBy'));
->>>>>>> 785812e9c13a64a9ae8fb801fc238fba0a3ee0ed
           }
         });
       }, {
