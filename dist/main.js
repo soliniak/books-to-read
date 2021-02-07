@@ -27611,8 +27611,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data */ "./src/data.js");
 /* harmony import */ var _generateTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./generateTable */ "./src/generateTable.js");
-/* harmony import */ var _editBook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editBook */ "./src/editBook.js");
-/* harmony import */ var _handleMessage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./handleMessage */ "./src/handleMessage.js");
+/* harmony import */ var _handleMessage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./handleMessage */ "./src/handleMessage.js");
+/* harmony import */ var _generateCategories__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./generateCategories */ "./src/generateCategories.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -27637,16 +27637,8 @@ var addBook = function addBook() {
   var addBookContainer = document.querySelector('.add-book__container');
   addBookForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    new FormData(e.target);
-    e.target.reset();
-    (0,_generateTable__WEBPACK_IMPORTED_MODULE_1__.default)();
-    addBook();
-  }, {
-    once: true
-  });
-  addBookForm.addEventListener('formdata', function (e) {
     var booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || _data__WEBPACK_IMPORTED_MODULE_0__.books;
-    var data = e.formData;
+    var data = new FormData(e.target);
     var dataHolder = {
       id: Date.now(),
       title: '',
@@ -27677,7 +27669,11 @@ var addBook = function addBook() {
     booksFromLoaclStorage.push(dataHolder);
     localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
     addBookContainer.classList.remove('modal-active');
-    (0,_handleMessage__WEBPACK_IMPORTED_MODULE_3__.default)('Pomyślnie dodano książkę do listy.');
+    (0,_handleMessage__WEBPACK_IMPORTED_MODULE_2__.default)('Pomyślnie dodano książkę do listy.');
+    e.target.reset();
+    (0,_generateTable__WEBPACK_IMPORTED_MODULE_1__.default)();
+    (0,_generateCategories__WEBPACK_IMPORTED_MODULE_3__.default)();
+    addBook();
   }, {
     once: true
   });
@@ -27716,10 +27712,7 @@ var addCategory = function addCategory() {
   var categoriesFromLoaclStorage = JSON.parse(localStorage.getItem('bookCategories')) || _data__WEBPACK_IMPORTED_MODULE_0__.categories;
   addCategoryForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    new FormData(e.target);
-  });
-  addCategoryForm.addEventListener('formdata', function (e) {
-    var data = e.formData;
+    var data = new FormData(e.target);
     var addedFlag = false;
 
     var _iterator = _createForOfIteratorHelper(data.values()),
@@ -27728,12 +27721,13 @@ var addCategory = function addCategory() {
     try {
       for (_iterator.s(); !(_step = _iterator.n()).done;) {
         var value = _step.value;
+        var newCategory = value.toString().toLowerCase();
 
-        if (!categoriesFromLoaclStorage.includes(value.toString().toLowerCase())) {
-          categoriesFromLoaclStorage.push(value.toString().toLowerCase());
+        if (!categoriesFromLoaclStorage.includes(newCategory)) {
+          categoriesFromLoaclStorage.push(newCategory);
           addedFlag = true;
           localStorage.setItem('bookCategories', JSON.stringify(categoriesFromLoaclStorage));
-          (0,_generateCategories__WEBPACK_IMPORTED_MODULE_1__.default)(value.toString().toLowerCase());
+          (0,_generateCategories__WEBPACK_IMPORTED_MODULE_1__.default)(newCategory);
         }
       }
     } catch (err) {
@@ -27752,6 +27746,8 @@ var addCategory = function addCategory() {
     } else {
       (0,_handleMessage__WEBPACK_IMPORTED_MODULE_2__.default)('Wybrana kategoria już istnieje.');
     }
+  }, {
+    once: true
   });
 };
 
@@ -27792,7 +27788,7 @@ var countBooksByCategories = function countBooksByCategories(books, categories) 
           categoryCount++;
         }
       });
-      categoriesQuantityContainer.innerHTML += "\n            ".concat(categoryCount ? "<li>".concat(category, ": <span class=\"category-count\">").concat(categoryCount, "</span></li>") : '', "\n            ");
+      categoriesQuantityContainer.innerHTML += "\n            ".concat(categoryCount ? "<li>- ".concat(category, ": <span class=\"category-count\">").concat(categoryCount, "</span></li>") : '', "\n            ");
     });
   }
 };
@@ -27811,14 +27807,9 @@ var countBooksByCategories = function countBooksByCategories(books, categories) 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "categories": () => (/* binding */ categories),
-/* harmony export */   "books": () => (/* binding */ books),
-/* harmony export */   "sort": () => (/* binding */ sort)
+/* harmony export */   "books": () => (/* binding */ books)
 /* harmony export */ });
-var categories = ['fantastyka', 'fantasy', 'science fiction', 'horror', 'klasyka', 'komedia', 'kryminał', 'sensacja', 'thriller', 'literatura młodzieżowa', 'literatura obyczajowa', 'romans', 'literatura piękna', 'powieść historyczna', 'powieść przygodowa'];
-var sort = {
-  sortBy: '',
-  direction: ''
-}; // Book object template
+var categories = ['fantastyka', 'fantasy', 'science fiction', 'horror', 'klasyka', 'komedia', 'kryminał', 'sensacja', 'thriller', 'literatura młodzieżowa', 'literatura obyczajowa', 'romans', 'literatura piękna', 'powieść historyczna', 'powieść przygodowa']; // Book object template
 // {
 //     id: '',
 //     title: '',
@@ -27855,7 +27846,7 @@ var deleteBook = function deleteBook(index) {
   if (index !== undefined) {
     booksFromLoaclStorage.splice(index, 1);
     localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
-    (0,_generateTable__WEBPACK_IMPORTED_MODULE_0__.default)();
+    (0,_generateTable__WEBPACK_IMPORTED_MODULE_0__.default)(localStorage.getItem('filterBy'), localStorage.getItem('sortBy'));
   } else {
     var deleteBtns = document.querySelectorAll('.delete-book');
     deleteBtns.forEach(function (btn) {
@@ -27863,7 +27854,7 @@ var deleteBook = function deleteBook(index) {
         booksFromLoaclStorage.forEach(function (book, index) {
           if (book.id === Number(e.target.dataset.id)) {
             (0,_handleMessage__WEBPACK_IMPORTED_MODULE_1__.default)("Czy na pewno chcesz usun\u0105\u0107 \"".concat(book.title, "\"?"), index);
-            (0,_generateTable__WEBPACK_IMPORTED_MODULE_0__.default)();
+            (0,_generateTable__WEBPACK_IMPORTED_MODULE_0__.default)(localStorage.getItem('filterBy'), localStorage.getItem('sortBy'));
           }
         });
       }, {
@@ -27891,6 +27882,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _generateCategories__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./generateCategories */ "./src/generateCategories.js");
 /* harmony import */ var _generateTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./generateTable */ "./src/generateTable.js");
 /* harmony import */ var _handleMessage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./handleMessage */ "./src/handleMessage.js");
+/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./data */ "./src/data.js");
+
 
 
 
@@ -27907,7 +27900,7 @@ var editBook = function editBook(editIndex) {
   var bookIndex = editIndex || '';
   editBookBtns.forEach(function (btn) {
     btn.addEventListener('click', function (e) {
-      var booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || [];
+      var booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || _data__WEBPACK_IMPORTED_MODULE_3__.books;
       (0,_generateCategories__WEBPACK_IMPORTED_MODULE_0__.default)();
       editBookContainer.classList.add('modal-active');
       booksFromLoaclStorage.forEach(function (book, index) {
@@ -27930,7 +27923,7 @@ var editBook = function editBook(editIndex) {
   });
   saveBookBtn.addEventListener('click', function (e) {
     e.preventDefault();
-    var booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || [];
+    var booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || _data__WEBPACK_IMPORTED_MODULE_3__.books;
     var _booksFromLoaclStorag = booksFromLoaclStorage[bookIndex || localStorage.getItem('bookEditIndex')],
         id = _booksFromLoaclStorag.id,
         addDate = _booksFromLoaclStorag.addDate;
@@ -28071,6 +28064,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data */ "./src/data.js");
 /* harmony import */ var _deleteBook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./deleteBook */ "./src/deleteBook.js");
 /* harmony import */ var _editBook__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editBook */ "./src/editBook.js");
+/* harmony import */ var _addBook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./addBook */ "./src/addBook.js");
+
 
 
 
@@ -28125,7 +28120,8 @@ var generateTable = function generateTable() {
   }
 
   (0,_deleteBook__WEBPACK_IMPORTED_MODULE_2__.default)();
-  (0,_editBook__WEBPACK_IMPORTED_MODULE_3__.default)();
+  (0,_editBook__WEBPACK_IMPORTED_MODULE_3__.default)(); // addBook();
+
   (0,_countBooksAndCategories__WEBPACK_IMPORTED_MODULE_0__.countBooks)(booksFromLoaclStorage);
   (0,_countBooksAndCategories__WEBPACK_IMPORTED_MODULE_0__.countBooksByCategories)(booksFromLoaclStorage, categoriesFromLoaclStorage);
   return tableBody;

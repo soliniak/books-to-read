@@ -339,13 +339,16 @@ h2 {
 }
 
 .categories__quantity {
-  width: 130px;
+  width: auto;
 }
 .categories__quantity li {
   width: 100%;
   display: flex;
   justify-content: space-between;
   padding-top: 5px;
+}
+.categories__quantity li .category-count {
+  margin-left: 10px;
 }
 
 /*# sourceMappingURL=main.css.map*/
