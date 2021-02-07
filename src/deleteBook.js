@@ -7,7 +7,7 @@ const deleteBook = (index) => {
     if(index !== undefined) {
         booksFromLoaclStorage.splice(index, 1);
         localStorage.setItem('booksToRead', JSON.stringify(booksFromLoaclStorage));
-        generateTable();
+        generateTable(localStorage.getItem('filterBy'), localStorage.getItem('sortBy'));
     } else {
         const deleteBtns = document.querySelectorAll('.delete-book');
         
@@ -16,7 +16,7 @@ const deleteBook = (index) => {
                 booksFromLoaclStorage.forEach((book, index) => {
                     if(book.id === Number(e.target.dataset.id)) {
                         handleMessage(`Czy na pewno chcesz usunąć "${book.title}"?`, index);
-                        generateTable();
+                        generateTable(localStorage.getItem('filterBy'), localStorage.getItem('sortBy'));
                     }
                 });        
             }, {once: true});
