@@ -1,35 +1,38 @@
-import {countBooks, countBooksByCategories} from './countBooksAndCategories';
+import { countBooks, countBooksByCategories } from './countBooksAndCategories';
 import { books, categories } from './data';
 import deleteBook from './deleteBook';
 import editBook from './editBook';
 
-const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sort, sortDirection = sortDirection || 'asc') => {
+const generateTable = (filter, sort, sortDirection = 'asc') => {
     const booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || books;
-    
+
     const categoriesFromLoaclStorage = JSON.parse(localStorage.getItem('bookCategories')) || categories;
     const tableBody = document.querySelector('.table__body');
 
     tableBody.innerHTML = '';
 
-    if(booksFromLoaclStorage.length) {
+    if (booksFromLoaclStorage.length) {
         booksFromLoaclStorage
-            .filter(( book ) => {
-                const {priority, author, category} = book;
-                
-                return priority.toLowerCase().includes(filter.toLowerCase())
-                    || author.toLowerCase().includes(filter.toLowerCase())
-                    || category.toLowerCase().includes(filter.toLowerCase())
+            .filter((book) => {
+                const { priority, author, category } = book;
+
+                if (filter && booksFromLoaclStorage.length > 1) {
+                    return priority.toLowerCase().includes(filter.toLowerCase()) ||
+                        author.toLowerCase().includes(filter.toLowerCase()) ||
+                        category.toLowerCase().includes(filter.toLowerCase())
+                }
+                return book
             })
             .sort((bookA, bookB) => {
-                if(sort && booksFromLoaclStorage.length > 1) {
-                    if(sort === 'addDate') {
-                        if(sortDirection === 'asc') {
+                if (sort && booksFromLoaclStorage.length > 1) {
+                    if (sort === 'addDate') {
+                        if (sortDirection === 'asc') {
                             return new Date(bookA[sort]) < new Date(bookB[sort]) ? -1 : 1;
                         } else {
                             return new Date(bookA[sort]) > new Date(bookB[sort]) ? -1 : 1;
                         }
                     } else {
-                        if(sortDirection === 'asc') {
+                        if (sortDirection === 'asc') {
                             return bookA[sort].toLowerCase() < bookB[sort].toLowerCase() ? -1 : 1;
                         } else {
                             return bookA[sort].toLowerCase() > bookB[sort].toLowerCase() ? -1 : 1;
@@ -38,9 +41,9 @@ const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sor
                 }
                 return 0
             })
-            .forEach(( book, index ) => {
+            .forEach((book, index) => {
                 const { id, title, author, category, addDate, priority } = book;
-                
+
                 const tableRowTemplate = `
                 <tr>
                     <td class="id">${index + 1}</td>
@@ -55,7 +58,7 @@ const generateTable = (filter = '', sort = localStorage.getItem('sortBy') || sor
                     </td>
                 </tr>
                 `;
-                
+
                 tableBody.innerHTML += tableRowTemplate;
             });
     } else {

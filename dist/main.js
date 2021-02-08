@@ -28012,6 +28012,7 @@ __webpack_require__.r(__webpack_exports__);
 var filterTable = function filterTable() {
   var filterInput = document.querySelector('.filter-table');
   filterInput.addEventListener('input', function (e) {
+    console.log(e.target.value);
     localStorage.setItem('filterBy', e.target.value);
     (0,_generateTable__WEBPACK_IMPORTED_MODULE_0__.default)(localStorage.getItem('filterBy') || e.target.value, localStorage.getItem('sortBy'));
   });
@@ -28071,10 +28072,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var generateTable = function generateTable() {
-  var filter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-  var sort = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : localStorage.getItem('sortBy') || sort;
-  var sortDirection = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : sortDirection || 'asc';
+var generateTable = function generateTable(filter, sort) {
+  var sortDirection = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'asc';
   var booksFromLoaclStorage = JSON.parse(localStorage.getItem('booksToRead')) || _data__WEBPACK_IMPORTED_MODULE_1__.books;
   var categoriesFromLoaclStorage = JSON.parse(localStorage.getItem('bookCategories')) || _data__WEBPACK_IMPORTED_MODULE_1__.categories;
   var tableBody = document.querySelector('.table__body');
@@ -28085,7 +28084,12 @@ var generateTable = function generateTable() {
       var priority = book.priority,
           author = book.author,
           category = book.category;
-      return priority.toLowerCase().includes(filter.toLowerCase()) || author.toLowerCase().includes(filter.toLowerCase()) || category.toLowerCase().includes(filter.toLowerCase());
+
+      if (filter && booksFromLoaclStorage.length > 1) {
+        return priority.toLowerCase().includes(filter.toLowerCase()) || author.toLowerCase().includes(filter.toLowerCase()) || category.toLowerCase().includes(filter.toLowerCase());
+      }
+
+      return book;
     }).sort(function (bookA, bookB) {
       if (sort && booksFromLoaclStorage.length > 1) {
         if (sort === 'addDate') {

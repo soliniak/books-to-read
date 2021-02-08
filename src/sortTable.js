@@ -15,5 +15,3 @@ const sortTable = () => {
 };
 
 export default sortTable;
-
-
